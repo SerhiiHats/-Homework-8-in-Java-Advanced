@@ -1,5 +1,6 @@
 import models.A;
 import models.B;
+import models.Sinhronizator;
 
 /**
  * Домашнее задание 8
@@ -12,10 +13,12 @@ import models.B;
 
 public class Main {
     public static void main(String[] args) {
-       Thread thread0 = new Thread(new A());
-       Thread thread1 = new Thread(new B());
+        Sinhronizator sinhronizator = new Sinhronizator();
+        Thread threadFirst = new Thread(new A(sinhronizator), "first");
+        Thread threadSecond = new Thread(new B(sinhronizator), "second");
 
-       thread0.start();
-       thread1.start();
+        threadFirst.start();
+        threadSecond.start();
     }
+
 }

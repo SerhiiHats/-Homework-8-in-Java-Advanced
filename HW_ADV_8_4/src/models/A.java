@@ -2,17 +2,21 @@ package models;
 
 import color.Color;
 
-import java.util.Queue;
 
 public class A implements Runnable {
     String name = "1 класс";
     String YELLOW = Color.YELLOW;
     String DEFAULT = Color.DEFAULT;
 
+    Sinhronizator sinhronizator;
 
-    public synchronized void print() {
-        for (int i = 0; i < 20; i++) {
-            System.out.println(YELLOW + name + DEFAULT);
+    public A(Sinhronizator sinhronizator) {
+        this.sinhronizator = sinhronizator;
+    }
+
+    public void print() {
+        for (int i = 1; i <= 20; i++) {
+            sinhronizator.sinchronizatorA(YELLOW + name + DEFAULT + " напечатался " + i + "-й раз");
         }
     }
 
