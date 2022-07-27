@@ -29,7 +29,7 @@ public class Sinhronizator {
     }
 
     public synchronized void sinchronizatorA(String s) {
-        if (flag) {
+        while (flag) {
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -48,7 +48,7 @@ public class Sinhronizator {
     }
 
     public synchronized void sinchronizatorB(String s) {
-        if (!flag) {
+        while (!flag) {
             try {
                 wait();
             } catch (InterruptedException e) {
